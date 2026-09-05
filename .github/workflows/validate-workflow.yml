@@ -1,0 +1,38 @@
+name: Validate n8n workflow
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Validate JSON syntax
+        run: jq empty 01-getting-started/warehouse-order-processing/workflow.json
+
+      - name: Check required workflow structure
+        run: |
+          jq -e '
+            (.nodes | length > 0) and
+            (.connections | type == "object") and
+            (.settings.timezone == "America/Sao_Paulo")
+          ' 01-getting-started/warehouse-order-processing/workflow.json
+
+      - name: Reject credential and instance metadata
+        run: |
+          if jq -e '.. | objects | has("credentials") or has("instanceId") or has("webhookId")' 01-getting-started/warehouse-order-processing/workflow.json | grep -q true; then
+            echo "Sensitive n8n metadata detected."
+            exit 1
+          fi
+
+      - name: Reject a real assessment ID
+        run: |
+          value="$(jq -r '.nodes[] | select(.name == "GetDataFromWarehouse") | .parameters.headerParameters.parameters[] | select(.name == "x-assessment-id") | .value' 01-getting-started/warehouse-order-processing/workflow.json)"
+          test "$value" = "YOUR_ASSESSMENT_ID"
