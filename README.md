@@ -36,16 +36,7 @@ An automated warehouse pipeline that retrieves orders from an authenticated endp
 - Discord webhook notifications
 - Timezone-aware scheduling
 
-```mermaid
-flowchart LR
-    A[Manual trigger] --> C[Fetch orders]
-    B[Monday 09:00] --> C
-    C --> D{Processing and Mario?}
-    D -->|Yes| E[Upsert orders]
-    D -->|Yes| F[Selected totals]
-    D -->|No| G[Remaining totals]
-    G --> H[Discord summary]
-```
+![Warehouse Order Processing workflow architecture](./01-getting-started/warehouse-order-processing/assets/workflow-architecture.svg)
 
 **[Open project documentation →](./01-getting-started/warehouse-order-processing/)**
 
@@ -84,6 +75,8 @@ Each completed module contains importable workflow exports and focused documenta
 .
 ├── 01-getting-started/
 │   └── warehouse-order-processing/
+│       ├── assets/
+│       │   └── workflow-architecture.svg
 │       ├── README.md
 │       └── workflow.json
 ├── 02-working-with-data/

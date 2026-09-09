@@ -14,16 +14,7 @@ Automate the retrieval, classification, aggregation, storage, and notification o
 
 ## Architecture
 
-```mermaid
-flowchart LR
-    A[Manual trigger] --> C[Warehouse API]
-    B[Monday 09:00] --> C
-    C --> D{Status and employee}
-    D -->|Match| E[Upsert Data Table]
-    D -->|Match| F[Selected totals]
-    D -->|Other| G[Remaining totals]
-    G --> H[Discord summary]
-```
+![Warehouse Order Processing workflow architecture](./assets/workflow-architecture.svg)
 
 ## Workflow stages
 
