@@ -156,7 +156,6 @@
       "name": "CalculateBookedProcessingOrders"
     }
   ],
-  "pinData": {},
   "connections": {
     "Trigger Manually": {"main": [[{"node": "GetDataFromWarehouse", "type": "main", "index": 0}]]},
     "GetDataFromWarehouse": {"main": [[{"node": "CheckOrderStatus", "type": "main", "index": 0}]]},

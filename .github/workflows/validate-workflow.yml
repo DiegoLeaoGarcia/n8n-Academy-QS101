@@ -30,7 +30,13 @@ jobs:
       - name: Reject credential and instance metadata
         run: |
           find . -name workflow.json -print0 | while IFS= read -r -d '' workflow; do
-            if jq -e '.. | objects | has("credentials") or has("instanceId") or has("webhookId")' "$workflow" | grep -q true; then
+            if jq -e '.. | objects |
+              has("credentials") or
+              has("instanceId") or
+              has("webhookId") or
+              has("cachedResultUrl") or
+              has("errorWorkflow")
+            ' "$workflow" | grep -q true; then
               echo "Sensitive n8n metadata detected in $workflow."
               exit 1
             fi
@@ -42,3 +48,36 @@ jobs:
             echo "Possible assessment ID detected."
             exit 1
           fi
+
+      - name: Validate visual assets
+        run: |
+          find . -name '*.svg' -print0 | while IFS= read -r -d '' asset; do
+            test -s "$asset" || {
+              echo "Empty visual asset: $asset"
+              exit 1
+            }
+            grep -q '<svg' "$asset" || {
+              echo "Invalid SVG asset: $asset"
+              exit 1
+            }
+          done
+
+      - name: Validate local documentation links
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import re
+          import sys
+
+          failures = []
+          for readme in pathlib.Path(".").rglob("README.md"):
+              content = readme.read_text(encoding="utf-8")
+              for target in re.findall(r"!?(?:\[[^]]*\])\((\./[^)#?]+)", content):
+                  path = (readme.parent / target).resolve()
+                  if not path.exists():
+                      failures.append(f"{readme}: missing {target}")
+
+          if failures:
+              print("\n".join(failures))
+              sys.exit(1)
+          PY

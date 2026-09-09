@@ -17,10 +17,8 @@
         "operation": "get",
         "dataTableId": {
           "__rl": true,
-          "value": "0za5zrViR0WN84sK",
-          "mode": "list",
-          "cachedResultName": "customers.csv",
-          "cachedResultUrl": "/projects/kxKprm45PgFhLNlx/datatables/0za5zrViR0WN84sK"
+          "value": "customers",
+          "mode": "name"
         },
         "matchType": "allConditions",
         "returnAll": true
@@ -76,14 +74,13 @@
         "operation": "update",
         "dataTableId": {
           "__rl": true,
-          "value": "0za5zrViR0WN84sK",
-          "mode": "list",
-          "cachedResultName": "customers.csv",
-          "cachedResultUrl": "/projects/kxKprm45PgFhLNlx/datatables/0za5zrViR0WN84sK"
+          "value": "customers",
+          "mode": "name"
         },
         "filters": {
           "conditions": [
             {
+              "keyName": "id",
               "keyValue": "={{ $json.id }}"
             }
           ]

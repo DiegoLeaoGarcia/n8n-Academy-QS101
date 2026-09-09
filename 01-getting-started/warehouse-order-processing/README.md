@@ -1,28 +1,63 @@
 # Warehouse Order Processing Automation
 
-This workflow was completed during the **Getting Started** module of the official n8n Academy QS101 Quickstart course.
+![Status](https://img.shields.io/badge/status-completed-2ea44f)
+![n8n](https://img.shields.io/badge/platform-n8n-EA4B71?logo=n8n&logoColor=white)
+![Module](https://img.shields.io/badge/QS101-module_01-0B8793)
 
-## Objective
+> **Navigation:** [Course portfolio](../../) › Module 01 › Warehouse Order Processing
 
-Automate the retrieval, classification, aggregation, storage, and notification of warehouse order data.
+Production-style workflow completed during the **Getting Started** module of the official n8n Academy QS101 Quickstart course.
 
-## Workflow logic
+## Business objective
 
-1. Start manually or every Monday at 09:00.
-2. Retrieve warehouse orders through an authenticated HTTP request.
-3. Select orders where `orderStatus` is `processing` and `employeeName` is `Mario`.
-4. Calculate order counts and monetary totals with JavaScript Code nodes.
-5. Upsert selected order records into an n8n Data Table.
-6. Send a summary notification through Discord.
+Automate the retrieval, classification, aggregation, storage, and notification of warehouse order data while supporting both manual and scheduled execution.
 
-## Import
+## Architecture
 
-1. Open the n8n workflow editor.
-2. Select **Import from File**.
-3. Import `workflow.json`.
-4. Replace `YOUR_ASSESSMENT_ID` or adapt the HTTP request to your own API.
-5. Configure your HTTP Header Auth and Discord Webhook credentials.
-6. Create the required `orders` Data Table.
-7. Review the `America/Sao_Paulo` timezone before activation.
+```mermaid
+flowchart LR
+    A[Manual trigger] --> C[Warehouse API]
+    B[Monday 09:00] --> C
+    C --> D{Status and employee}
+    D -->|Match| E[Upsert Data Table]
+    D -->|Match| F[Selected totals]
+    D -->|Other| G[Remaining totals]
+    G --> H[Discord summary]
+```
 
-The public export contains no credentials or private instance identifiers.
+## Workflow stages
+
+| Stage | Node | Responsibility |
+| --- | --- | --- |
+| Trigger | `Trigger Manually` | Run the workflow on demand |
+| Trigger | `TriggerMondays9am` | Run every Monday at 09:00 |
+| Retrieve | `GetDataFromWarehouse` | Request warehouse orders using Header Auth |
+| Decide | `CheckOrderStatus` | Match processing orders assigned to Mario |
+| Persist | `UpsertOrders` | Insert or update matching orders |
+| Calculate | Code nodes | Calculate order counts and monetary totals |
+| Notify | `Discord` | Send the weekly summary |
+
+## Expected behavior
+
+- Both triggers feed the same authenticated request.
+- Matching records are persisted without creating duplicate order rows.
+- Both branches calculate independent totals.
+- The Discord message reports the order count and rounded monetary value.
+
+## Import and configure
+
+1. Download [`workflow.json`](./workflow.json).
+2. In n8n, select **Import from File**.
+3. Replace `YOUR_ASSESSMENT_ID` with your own Academy assessment ID.
+4. Configure an authorized HTTP Header Auth credential.
+5. Create the required `orders` Data Table and select it in `UpsertOrders`.
+6. Configure your Discord Webhook credential.
+7. Review the `America/Sao_Paulo` timezone before publishing.
+
+## Security
+
+The public export contains no credential objects, private webhook URLs, workflow IDs, or private instance metadata. Credentials must be configured only inside your own n8n instance.
+
+---
+
+[Back to course portfolio](../../)
