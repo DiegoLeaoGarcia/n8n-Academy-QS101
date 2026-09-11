@@ -12,8 +12,7 @@
         0
       ],
       "id": "17054d58-06d2-403a-8562-6d81b69ff8df",
-      "name": "When chat message received",
-      "webhookId": "6d2909b5-2dfc-4f06-aa60-0dffa33620dc"
+      "name": "When chat message received"
     },
     {
       "parameters": {
@@ -167,4 +166,3 @@
   "nodeGroups": [],
   "tags": []
 }
-
