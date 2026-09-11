@@ -1,8 +1,8 @@
 # n8n Academy QS101 — Automation Portfolio
 
 [![n8n](https://img.shields.io/badge/n8n-Academy_QS101-EA4B71?logo=n8n&logoColor=white)](https://learn.n8n.io/)
-![Progress](https://img.shields.io/badge/course_progress-2%20of%204%20modules-2ea44f)
-![Workflows](https://img.shields.io/badge/n8n_workflows-4-0B8793)
+![Progress](https://img.shields.io/badge/course_progress-4%20of%204%20modules-2ea44f)
+![Workflows](https://img.shields.io/badge/n8n_workflows-5-0B8793)
 ![Validation](https://img.shields.io/github/actions/workflow/status/DiegoLeaoGarcia/n8n-Academy-QS101/validate-workflow.yml?branch=main&label=workflow%20validation)
 
 Professional portfolio of hands-on automation projects developed while completing the official **n8n Academy QS101: n8n Quickstart** course.
@@ -17,8 +17,8 @@ The repository documents practical experience with workflow orchestration, authe
 | --- | :---: | --- |
 | [01 — Getting Started](./01-getting-started/warehouse-order-processing/) | ✅ Completed | Warehouse Order Processing Automation |
 | [02 — Working with Data](./02-working-with-data/) | ✅ Completed | Data Enrichment, Reporting, and Error Monitoring |
-| 03 — Building an AI Agent | ⬜ Not started | Planned |
-| 04 — Final Exam and Wrap Up | ⬜ Not started | Planned |
+| [03 — Building an AI Agent](./03-building-an-ai-agent/) | ✅ Completed | Customer Service Agent |
+| [04 — Final Exam and Wrap Up](./04-final-exam-and-wrap-up/) | ✅ Completed | QS101 final assessment and course completion |
 
 ## Completed projects
 
@@ -67,6 +67,32 @@ A connected three-workflow reporting system. It enriches customer records with g
 
 **[Open complete module documentation →](./02-working-with-data/)**
 
+---
+
+### 03 — Customer Service Agent
+
+A conversational AI agent that uses an OpenRouter chat model, short-term memory, a customer Data Table, and an authenticated order API to answer customer-service questions with real workflow data.
+
+![Customer Service Agent architecture](./03-building-an-ai-agent/assets/customer-service-agent.svg)
+
+**Core capabilities**
+
+- Chat-based workflow trigger
+- Model access through OpenRouter
+- Conversation context with Simple Memory
+- Agent-directed tool selection
+- Customer lookup through a Data Table Tool
+- Authenticated order lookup through an HTTP Request Tool
+- Multi-tool reasoning with explicit anti-hallucination instructions
+
+**[Open complete module documentation →](./03-building-an-ai-agent/)**
+
+## Course credential
+
+The complete QS101 learning path and final assessment are documented in the [course completion record](./04-final-exam-and-wrap-up/).
+
+**[View the public n8n credential →](https://badges.n8n.io/63146206-3b16-42d3-a373-d3eadacfcc74#acc.O6bynaHJ)**
+
 ## Repository organization
 
 Each completed module contains importable workflow exports and focused documentation. Complex modules also include architecture diagrams in `assets/`.
@@ -94,6 +120,15 @@ Each completed module contains importable workflow exports and focused documenta
 │   └── error-monitoring/
 │       ├── README.md
 │       └── workflow.json
+├── 03-building-an-ai-agent/
+│   ├── README.md
+│   ├── assets/
+│   │   └── customer-service-agent.svg
+│   └── customer-service-agent/
+│       ├── README.md
+│       └── workflow.json
+├── 04-final-exam-and-wrap-up/
+│   └── README.md
 ├── .github/workflows/
 │   └── validate-workflow.yml
 ├── SECURITY.md

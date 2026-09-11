@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="680" viewBox="0 0 1400 680" role="img" aria-labelledby="title desc">
+  <title id="title">Customer Service Agent architecture</title>
+  <desc id="desc">A chat trigger sends messages to an AI Agent connected to an OpenRouter model, Simple Memory, a customer Data Table tool, and an order API tool.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#111827"/><stop offset="1" stop-color="#172033"/></linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#020617" flood-opacity=".35"/></filter>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#94a3b8"/></marker>
+    <style>.h{font:700 30px Inter,Segoe UI,sans-serif;fill:#f8fafc}.s{font:400 16px Inter,Segoe UI,sans-serif;fill:#94a3b8}.l{font:700 18px Inter,Segoe UI,sans-serif;fill:#f8fafc}.d{font:400 13px Inter,Segoe UI,sans-serif;fill:#cbd5e1}.t{font:700 12px Inter,Segoe UI,sans-serif;fill:#dbeafe;letter-spacing:.06em}.card{stroke-width:2;rx:18;filter:url(#shadow)}.line{fill:none;stroke:#94a3b8;stroke-width:3;marker-end:url(#arrow)}.soft{fill:none;stroke:#64748b;stroke-width:3;stroke-dasharray:8 7;marker-end:url(#arrow)}</style>
+  </defs>
+  <rect width="1400" height="680" rx="28" fill="url(#bg)"/><circle cx="1280" cy="70" r="170" fill="#ea4b71" opacity=".08"/><circle cx="90" cy="630" r="190" fill="#6366f1" opacity=".08"/>
+  <text x="70" y="70" class="h">Customer Service Agent</text><text x="70" y="103" class="s">Conversational AI with memory, model reasoning, and controlled access to customer and order data</text>
+  <path class="line" d="M300 260H465"/><path class="soft" d="M690 200V150H850"/><path class="soft" d="M690 320V405H850"/><path class="soft" d="M690 320V535H850"/>
+  <rect class="card" x="70" y="200" width="230" height="120" fill="#172554" stroke="#3b82f6"/><text x="96" y="235" class="t">CHAT INTERFACE</text><text x="96" y="271" class="l">New chat message</text><text x="96" y="296" class="d">Receive questions and return answers</text>
+  <rect class="card" x="465" y="180" width="225" height="160" fill="#3b2330" stroke="#ea4b71"/><text x="491" y="215" class="t">ORCHESTRATION</text><text x="491" y="251" class="l">AI Agent</text><text x="491" y="278" class="d">Understand the goal</text><text x="491" y="299" class="d">Select the appropriate tool</text><text x="491" y="320" class="d">Compose an evidence-based reply</text>
+  <rect class="card" x="850" y="105" width="470" height="120" fill="#30284a" stroke="#a78bfa"/><text x="878" y="140" class="t">CHAT MODEL</text><text x="878" y="176" class="l">OpenRouter</text><text x="878" y="201" class="d">Provider-agnostic model access with tool-calling support</text>
+  <rect class="card" x="850" y="260" width="470" height="120" fill="#12343b" stroke="#22c55e"/><text x="878" y="295" class="t">CONVERSATION CONTEXT</text><text x="878" y="331" class="l">Simple Memory</text><text x="878" y="356" class="d">Append recent interactions to each model request</text>
+  <rect class="card" x="850" y="415" width="220" height="130" fill="#3b2f18" stroke="#f59e0b"/><text x="876" y="450" class="t">CUSTOMER TOOL</text><text x="876" y="486" class="l">Data Table</text><text x="876" y="511" class="d">Customers and regions</text>
+  <rect class="card" x="1100" y="415" width="220" height="130" fill="#25304a" stroke="#38bdf8"/><text x="1126" y="450" class="t">ORDER TOOL</text><text x="1126" y="486" class="l">Order API</text><text x="1126" y="511" class="d">Orders and employees</text>
+  <g transform="translate(70 610)"><rect width="1260" height="2" fill="#334155"/><circle cx="8" cy="35" r="6" fill="#22c55e"/><text x="24" y="40" class="d">Completed QS101 Module 03 workflow</text><text x="1260" y="40" text-anchor="end" class="d">n8n Academy portfolio</text></g>
+</svg>
